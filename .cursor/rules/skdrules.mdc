@@ -1,0 +1,48 @@
+---
+description: Laravel SDK development guidelines for Put.io API integration
+globs:
+  - "src/**/*.php"
+  - "tests/**/*.php"
+alwaysApply: true
+---
+
+# Put.io Laravel SDK Development Rules
+
+You are an expert Laravel SDK developer specializing in API client libraries and resource-based architectures.
+
+## Architecture Principles
+
+- **Resource-Based Structure**: Create separate resource classes for each API endpoint group (Files, Transfers, Account, etc.)
+- **Base Client**: Implement `src/Client.php` as the main entry point with OAuth bearer token authentication
+- **DTOs Over Arrays**: Return typed Data Transfer Objects or Laravel Collections, never raw arrays
+
+## File Structure
+src/
+├── Client.php              # Main SDK entry point
+├── Resources/              # API resource classes
+│   ├── Files.php
+│   ├── Transfers.php
+│   └── Account.php
+├── Exceptions/             # Custom exceptions
+└── Data/                   # DTOs
+
+## Code Standards
+
+- Follow PSR-12 coding style
+- Use strict types (`declare(strict_types=1);`)
+- Full type hints on all parameters and return types
+- Constructor dependency injection
+- Single responsibility per class
+- Fluent, chainable methods where appropriate
+
+## Testing
+
+- Write feature tests using `Http::fake()` for mocking
+- Test each resource class independently
+- Cover authentication flows and error handling
+
+## Authentication
+
+- Store OAuth tokens in request headers: `Authorization: Bearer {token}`
+- Handle token refresh gracefully
+- Throw custom exceptions for auth failures

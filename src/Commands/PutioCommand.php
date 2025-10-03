@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Developing Sonder\Putio\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class PutioCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'putio';
 
     public $description = 'My command';
 
